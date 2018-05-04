@@ -1,15 +1,14 @@
 #include <SFML\System\Vector2.hpp>
-#include "Tank.h"
+#include "Enemy.h"
 
 
 class AI_Action{
 protected:
-	Tank & owner;
+	Enemy & owner;
 	float lifetime;
 	bool completed = false;
 public:
-
-	AI_Action(Tank& owner) :owner(owner), lifetime(2.0f) {}
+	AI_Action(Enemy& owner) :owner(owner), lifetime(2.0f) {}
 	~AI_Action() {}
 
 	virtual void execute(float deltaTime) final;
@@ -27,12 +26,21 @@ class AI_Move : public AI_Action
 	sf::Vector2f destination;
 
 public:
-	AI_Move(Tank & owner, sf::Vector2f dest);
+	AI_Move(Enemy & owner, sf::Vector2f dest);
 	~AI_Move() {};
 
 	void action() override;
 };
 
+class AI_ShootAt : public AI_Action
+{
+	sf::Vector2f target;
+public:
+	AI_ShootAt(Enemy & owner, sf::Vector2f target);
+	~AI_ShootAt() {};
+
+	void action() override;
+};
 
 
 //============ Generic Actions ===================
@@ -40,7 +48,7 @@ public:
 class AI_MoveForward : public AI_Action
 {
 public:
-	AI_MoveForward(Tank & owner) :AI_Action(owner) {}
+	AI_MoveForward(Enemy & owner) :AI_Action(owner) {}
 	~AI_MoveForward() {};
 
 	void action() override {
@@ -51,7 +59,7 @@ public:
 class AI_MoveBackward : public AI_Action
 {
 public:
-	AI_MoveBackward(Tank & owner) :AI_Action(owner){}
+	AI_MoveBackward(Enemy & owner) :AI_Action(owner){}
 	~AI_MoveBackward() {};
 
 	void action() override {
@@ -62,7 +70,7 @@ public:
 class AI_TurnLeft : public AI_Action
 {
 public:
-	AI_TurnLeft(Tank & owner) :AI_Action(owner) {}
+	AI_TurnLeft(Enemy & owner) :AI_Action(owner) {}
 	~AI_TurnLeft() {};
 
 	void action() override {
@@ -73,7 +81,7 @@ public:
 class AI_TurnRight : public AI_Action
 {
 public:
-	AI_TurnRight(Tank & owner) :AI_Action(owner) {}
+	AI_TurnRight(Enemy & owner) :AI_Action(owner) {}
 	~AI_TurnRight() {};
 
 	void action() override {

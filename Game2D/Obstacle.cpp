@@ -6,7 +6,7 @@
 
 Obstacle::Obstacle(float x, float y, float w, float h)	
 {
-	name = "Obstacle";
+	setName("Obstacle");
 	body.setPosition(x, y);
 	body.setSize(sf::Vector2f(w, h));
 	body.setFillColor(sf::Color::Transparent);

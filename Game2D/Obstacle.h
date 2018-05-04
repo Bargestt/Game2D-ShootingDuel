@@ -3,6 +3,7 @@
 
 class Obstacle : public Entity
 {
+protected:
 	sf::RectangleShape body;
 
 	sf::Color bodyColor = sf::Color(255, 0, 255);
@@ -11,12 +12,12 @@ public:
 	~Obstacle();
 
 
-	void update(float deltaTime) override;
+	virtual void update(float deltaTime) override;
 
 	void setPosition(const sf::Vector2f& position)override;
 	sf::Vector2f getPosition() const override;
 
-	void onCollision(const Entity& other)override;
+	virtual void onCollision(const Entity& other)override;
 
 protected:
 

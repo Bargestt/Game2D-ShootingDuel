@@ -4,6 +4,7 @@
 #include"GameContext.h"
 #include"Renderer.h"
 
+#include"Border.h"
 #include"Obstacle.h"
 #include"Player.h"
 #include"Enemy.h"

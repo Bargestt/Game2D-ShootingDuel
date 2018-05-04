@@ -6,6 +6,7 @@
 #include<SFML\Graphics.hpp>
 
 #include"Entity.h"
+#include"Tank.h"
 #include"Collidable.h"
 
 class EntityManager : public sf::Drawable
@@ -21,7 +22,10 @@ public:
 
 	void update(float deltaTime);
 	void fixedUpdate(float deltaTime);
-	
+
+	void performAction(std::shared_ptr<Tank> entity);
+
+protected:	
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 

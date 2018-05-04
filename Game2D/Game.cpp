@@ -77,6 +77,11 @@ void Game::events()
 		else if (event.type == sf::Event::KeyReleased)
 			keyRelease(event.key);
 	}
+	if (enemy->readyToFire) {
+		manager.performAction(enemy);
+		enemy->readyToFire = false;
+	}
+
 }
 void Game::keyRelease(const sf::Event::KeyEvent& e) {
 	if (e.code == Keyboard::A)
@@ -103,7 +108,7 @@ void Game::keyPress(const sf::Event::KeyEvent& e) {
 		player->setTurnRight(true);
 	}
 	else if (e.code == Keyboard::Space) {
-		player->doAction();
+		manager.performAction(player);
 	}
 }
 
@@ -113,15 +118,17 @@ void Game::initRes()
 	renderer = make_shared<Renderer>(context);
 
 	
+	player = make_shared<Player>(30.0f, 50.0f, Color::Green);
+	player->setPosition(100, 100);
+	manager.addEntity(player);
 
 	enemy = make_shared<Enemy>(30.0f, 50.0f);
 	enemy->setPosition(300, 300);
+	enemy->setNemesis(player);
 
 	manager.addEntity(enemy);
 
-	player = make_shared<Player>(30.0f, 50.0f, Color::Green);
-	player->setPosition(100, 100); 
-	manager.addEntity(player);
+
 
 
 	playerScore = guiManager.createScore(*player, { 30, 0 }, 30);
@@ -130,4 +137,18 @@ void Game::initRes()
 
 
 	manager.addEntity(make_shared<Obstacle>(200.0f, 100.0f, 200.0f, 100.0f));
+	manager.addEntity(make_shared<Obstacle>(700.0f, 200.0f, 100.0f, 300.0f));
+	manager.addEntity(make_shared<Obstacle>(100.0f, 500.0f, 100.0f, 200.0f));
+	manager.addEntity(make_shared<Obstacle>(850.0f, 300.0f, 100.0f, 100.0f));
+
+
+
+	float s = 10;
+	float w = static_cast<float>( pWindow->getSize().x );
+	float h = static_cast<float>( pWindow->getSize().y );
+
+	manager.addEntity(make_shared<Border>(-s, -s, w+s, s ));
+	manager.addEntity(make_shared<Border>(w, -s, s, h+s));
+	manager.addEntity(make_shared<Border>(0.0f, h, w+s, s));
+	manager.addEntity(make_shared<Border>(-s, 0.0f, s, h+s));
 }

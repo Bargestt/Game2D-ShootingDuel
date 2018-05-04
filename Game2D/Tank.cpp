@@ -2,6 +2,7 @@
 #include "Tank.h"
 #include <memory>
 
+
 using namespace std;
 using namespace sf;
 
@@ -23,7 +24,7 @@ Tank::~Tank()
 
 void Tank::init()
 {
-	name = "Tank";
+	setName("Tank");
 	type = TANK;
 
 	body.setRadius(bodyRadius);
@@ -38,6 +39,7 @@ void Tank::init()
 	gun.setOrigin(Vector2f(0, caliber / 2));
 
 	collider = std::make_shared<CircleCollider>(*this, bodyRadius);
+	action = make_shared<ShootAction>(*this);
 }
 
 void Tank::update(float deltaTime)
@@ -59,7 +61,7 @@ void Tank::update(float deltaTime)
 
 void Tank::onCollision(const Entity & other)
 {	
-	if (other.getType() == EntityType::OBSTACLE) {
+	if (other.getType() == OBSTACLE || other.getType() == BORDER) {
 		//TODO: Calc sliding vector
 		moveBy(static_cast<float>(-dx), static_cast<float>(-dy));		
 	}

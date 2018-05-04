@@ -95,6 +95,9 @@
     <ClInclude Include="AIActions.h">
       <Filter>Header Files\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Border.h">
+      <Filter>Header Files\entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Collidable.cpp">
@@ -150,6 +153,9 @@
     </ClCompile>
     <ClCompile Include="Actions.cpp">
       <Filter>Source Files\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Border.cpp">
+      <Filter>Source Files\entity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

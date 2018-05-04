@@ -1,6 +1,7 @@
 #pragma once
 #include"Entity.h"
 #include"GuiElement.h"
+#include "Actions.h"
 
 class Tank : public Entity
 {
@@ -18,11 +19,14 @@ private:
 	//PARAMETERS
 	float speed = 300;
 	float rotationSpeed = 150;	
-	float bulletSpeed = 100;
+	float bulletSpeed = 1000;
 
 	int hitsTaken = 0;
 	int score = 0;
+
 	std::shared_ptr<GuiElement> guiListener;
+
+	std::shared_ptr<Action> action;
 
 
 	double dx =0, dy=0; //last movement increment
@@ -56,6 +60,9 @@ public:
 	float getRotationSpeed() const { return rotationSpeed; }
 	float getCaliber() { return caliber; }
 	float getBulletSpeed() { return bulletSpeed; }
+
+	std::shared_ptr<Action> getAction() { return action; }
+	void setAction(std::shared_ptr<Action> newAction) { action = newAction; }
 
 	void setColor(const sf::Color& color);
 

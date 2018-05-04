@@ -4,10 +4,21 @@
 #include "Actions.h"
 #include "Tank.h"
 #include "Bullet.h"
+#include "EntityManager.h"
 
 
-void ShootAction::execute() {
-	std::cout << "Bang!" << std::endl;
-	//std::make_shared<Bullet>( owner.getPosition().x, owner.getPosition().y, 0, 0);
+void ShootAction::execute(EntityManager& control) {
+	sf::Vector2f gunPoint = owner.getPosition();
+	gunPoint.x  += static_cast<float>(cos(owner.getAngle() * M_PI / 180)) * owner.getGunLength();
+	gunPoint.y  += static_cast<float>(sin(owner.getAngle() * M_PI / 180)) * owner.getGunLength();
+
+	auto bullet = std::make_shared<Bullet>(
+											owner, 
+											gunPoint, 
+											owner.getAngle(), 
+											owner.getBulletSpeed(), 
+											owner.getCaliber() );
+	control.addEntity(bullet);
+
 };
 

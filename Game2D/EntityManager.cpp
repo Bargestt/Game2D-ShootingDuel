@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "EntityManager.h"
+#include "Actions.h"
 
 using namespace std;
 
@@ -15,13 +16,12 @@ EntityManager::~EntityManager()
 
 void EntityManager::addEntity(std::shared_ptr<Entity> entity)
 {
-	
 	//TODO: Inefficient
 	auto r = std::find(entities.begin(), entities.end(), entity);
 	if (r == entities.end()) 
 	{
-		entities.push_back(entity);		
-		entity->setControl( this);
+		entities.push_back(entity);	
+
 	}
 
 	cout << entities.size() <<endl;
@@ -59,10 +59,19 @@ void EntityManager::fixedUpdate(float deltaTime)
 	);
 }
 
+void EntityManager::performAction(std::shared_ptr<Tank> entity)
+{
+	auto action = entity->getAction();
+	if (action == nullptr) return;
+
+	action->execute(*this);
+}
+
 void EntityManager::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	for (auto entity : entities)
 	{
-		entity->draw(target, states);
+		target.draw(*entity, states);
+
 	}
 }

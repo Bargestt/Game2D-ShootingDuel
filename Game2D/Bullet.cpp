@@ -8,7 +8,7 @@ using namespace sf;
 Bullet::Bullet(Tank& source, sf::Vector2f pos, float angle, float speed, float size)
 	:source(source), angle(angle), speed(speed)
 {
-	name = "Bullet";
+	setName("Bullet");
 	type = BULLET;
 
 	speedX = static_cast<float>(cos(angle * M_PI / 180)) * speed;
@@ -50,7 +50,7 @@ void Bullet::onCollision(const Entity& other)
 	{
 		ricohet( *other.getCollider() );
 	}
-	else if (type == DEATH)
+	else if (type == BORDER)
 	{
 		status = DEAD;
 	}

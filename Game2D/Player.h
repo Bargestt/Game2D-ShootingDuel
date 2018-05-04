@@ -17,7 +17,7 @@ public:
 
 
 private:	
-	std::shared_ptr<Action> action;
+
 
 public:
 	Player();
@@ -26,8 +26,6 @@ public:
 
 	void update(float deltaTime);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-	void doAction();
 
 	void onCollision(const Entity & other) {
 		Tank::onCollision(other);
