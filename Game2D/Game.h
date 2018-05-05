@@ -4,12 +4,12 @@
 #include"GameContext.h"
 #include"Renderer.h"
 
-#include"Border.h"
-#include"Obstacle.h"
-#include"Player.h"
-#include"Enemy.h"
-#include"EntityManager.h"
-#include"GuiManager.h"
+#include"entity\Border.h"
+#include"entity\Obstacle.h"
+#include"entity\Player.h"
+#include"entity\Enemy.h"
+#include"entity\EntityManager.h"
+#include"gui\GuiManager.h"
 
 
 class Game

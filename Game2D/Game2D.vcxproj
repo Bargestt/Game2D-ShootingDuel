@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -117,7 +117,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -158,50 +158,47 @@
     <Image Include="..\Debug\res\image.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actions.h" />
-    <ClInclude Include="AIActions.h" />
-    <ClInclude Include="Border.h" />
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="actions\Actions.h" />
+    <ClInclude Include="actions\AIActions.h" />
     <ClInclude Include="Collidable.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="entity\Border.h" />
+    <ClInclude Include="entity\Bullet.h" />
+    <ClInclude Include="entity\Enemy.h" />
+    <ClInclude Include="entity\Entity.h" />
+    <ClInclude Include="entity\EntityManager.h" />
+    <ClInclude Include="entity\Obstacle.h" />
+    <ClInclude Include="entity\Player.h" />
+    <ClInclude Include="entity\Tank.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameContext.h" />
-    <ClInclude Include="GuiElement.h" />
-    <ClInclude Include="GuiLabel.h" />
-    <ClInclude Include="GuiManager.h" />
-    <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="gui\GuiElement.h" />
+    <ClInclude Include="gui\GuiLabel.h" />
+    <ClInclude Include="gui\GuiManager.h" />
+    <ClInclude Include="gui\Score.h" />
     <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Score.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Tank.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Actions.cpp" />
-    <ClCompile Include="AIActions.cpp" />
-    <ClCompile Include="Border.cpp" />
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="actions\Actions.cpp" />
+    <ClCompile Include="actions\AIActions.cpp" />
     <ClCompile Include="Collidable.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="entity\Border.cpp" />
+    <ClCompile Include="entity\Bullet.cpp" />
+    <ClCompile Include="entity\Enemy.cpp" />
+    <ClCompile Include="entity\Entity.cpp" />
+    <ClCompile Include="entity\EntityManager.cpp" />
+    <ClCompile Include="entity\Obstacle.cpp" />
+    <ClCompile Include="entity\Player.cpp" />
+    <ClCompile Include="entity\Tank.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game2D.cpp" />
     <ClCompile Include="GameContext.cpp" />
-    <ClCompile Include="GuiLabel.cpp" />
-    <ClCompile Include="GuiManager.cpp" />
-    <ClCompile Include="Obstacle.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="gui\GuiLabel.cpp" />
+    <ClCompile Include="gui\GuiManager.cpp" />
+    <ClCompile Include="gui\Score.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Score.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="Tank.cpp" />
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

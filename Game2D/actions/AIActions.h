@@ -1,5 +1,5 @@
 #include <SFML\System\Vector2.hpp>
-#include "Enemy.h"
+#include "..\entity\Enemy.h"
 
 
 class AI_Action{

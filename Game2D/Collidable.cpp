@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Collidable.h"
 
-#include "Entity.h"
+#include "entity\Entity.h"
 
 
 

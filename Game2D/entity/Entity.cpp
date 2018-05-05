@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "..\stdafx.h"
 #include "Entity.h"
 
 bool Entity::collidesWith(const Entity & target) const	

@@ -1,8 +1,8 @@
-#include "stdafx.h"
+#include "..\stdafx.h"
 
 
 #include "Enemy.h"
-#include"AIActions.h"
+#include"..\actions\AIActions.h"
 
 using namespace std;
 

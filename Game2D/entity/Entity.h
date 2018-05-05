@@ -2,7 +2,7 @@
 #include<SFML\Graphics.hpp>
 #include <memory>
 
-#include "Collidable.h"
+#include "..\Collidable.h"
 
 class EntityManager;
 

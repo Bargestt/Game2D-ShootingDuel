@@ -1,6 +1,6 @@
 #pragma once
 #include "GuiLabel.h"
-#include "Tank.h"
+#include "..\entity\Tank.h"
 class Score : public GuiLabel
 {
 	const Tank& target;

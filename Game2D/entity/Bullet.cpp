@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "..\stdafx.h"
 #include "Bullet.h"
 #include "EntityManager.h"
 

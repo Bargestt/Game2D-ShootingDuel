@@ -1,10 +1,10 @@
-#include "stdafx.h"
+#include "..\stdafx.h"
 #include<memory>
 
 #include "Actions.h"
-#include "Tank.h"
-#include "Bullet.h"
-#include "EntityManager.h"
+#include "..\entity\Tank.h"
+#include "..\entity\Bullet.h"
+#include "..\entity\EntityManager.h"
 
 
 void ShootAction::execute(EntityManager& control) {

@@ -1,6 +1,6 @@
-#include "stdafx.h"
+#include "..\stdafx.h"
 #include "EntityManager.h"
-#include "Actions.h"
+#include "..\actions\Actions.h"
 
 using namespace std;
 

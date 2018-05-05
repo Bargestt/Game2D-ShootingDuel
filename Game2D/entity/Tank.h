@@ -1,7 +1,7 @@
 #pragma once
 #include"Entity.h"
-#include"GuiElement.h"
-#include "Actions.h"
+#include"..\gui\GuiElement.h"
+#include "..\actions\Actions.h"
 
 class Tank : public Entity
 {

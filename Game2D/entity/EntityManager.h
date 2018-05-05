@@ -7,7 +7,7 @@
 
 #include"Entity.h"
 #include"Tank.h"
-#include"Collidable.h"
+#include"..\Collidable.h"
 
 class EntityManager : public sf::Drawable
 {

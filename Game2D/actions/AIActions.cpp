@@ -1,6 +1,6 @@
-#include "stdafx.h"
+#include "..\stdafx.h"
 #include "AIActions.h"
-#include"Tank.h"
+#include"..\entity\Tank.h"
 
 using namespace std;
 
