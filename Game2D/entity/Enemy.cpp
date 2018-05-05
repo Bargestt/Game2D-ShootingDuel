@@ -35,7 +35,7 @@ void Enemy::generateNewAction()
 	mt19937 mt(device());
 	std::uniform_real_distribution<float> rnd(0, 10);
 
-	cout << "NEW ACTION: " << nemesis->getPosition().x << " : " << nemesis->getPosition().y << endl;
+	//cout << "NEW ACTION: " << nemesis->getPosition().x << " : " << nemesis->getPosition().y << endl;
 	switch (static_cast<int>(rnd(mt))) {
 	case 0:
 		aiAction = make_shared<AI_MoveForward>(*this);
