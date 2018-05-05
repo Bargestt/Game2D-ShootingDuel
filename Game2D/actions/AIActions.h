@@ -8,7 +8,7 @@ protected:
 	float lifetime;
 	bool completed = false;
 public:
-	AI_Action(Enemy& owner) :owner(owner), lifetime(2.0f) {}
+	AI_Action(Enemy& owner, float life = 2.0f) :owner(owner), lifetime(life) {}
 	~AI_Action() {}
 
 	virtual void execute(float deltaTime) final;
@@ -48,7 +48,7 @@ public:
 class AI_MoveForward : public AI_Action
 {
 public:
-	AI_MoveForward(Enemy & owner) :AI_Action(owner) {}
+	AI_MoveForward(Enemy & owner, float life = 2.0f) :AI_Action(owner, life) {}
 	~AI_MoveForward() {};
 
 	void action() override {
@@ -59,7 +59,7 @@ public:
 class AI_MoveBackward : public AI_Action
 {
 public:
-	AI_MoveBackward(Enemy & owner) :AI_Action(owner){}
+	AI_MoveBackward(Enemy & owner, float life = 2.0f) :AI_Action(owner, life){}
 	~AI_MoveBackward() {};
 
 	void action() override {
@@ -70,7 +70,7 @@ public:
 class AI_TurnLeft : public AI_Action
 {
 public:
-	AI_TurnLeft(Enemy & owner) :AI_Action(owner) {}
+	AI_TurnLeft(Enemy & owner, float life = 2.0f) :AI_Action(owner, life) {}
 	~AI_TurnLeft() {};
 
 	void action() override {
@@ -81,7 +81,7 @@ public:
 class AI_TurnRight : public AI_Action
 {
 public:
-	AI_TurnRight(Enemy & owner) :AI_Action(owner) {}
+	AI_TurnRight(Enemy & owner, float life = 2.0f) :AI_Action(owner,life) {}
 	~AI_TurnRight() {};
 
 	void action() override {

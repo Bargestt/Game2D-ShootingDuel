@@ -57,10 +57,10 @@ void Game::loop()
 		
 		manager.update(delta);
 
-		renderer->draw(manager);			
-
-
+		//cant decide whats bettah
+		manager.render(renderer);
 		renderer->draw(guiManager);
+
 		renderer->finishRender();
 	}
 }

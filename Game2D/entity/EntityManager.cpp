@@ -17,7 +17,6 @@ EntityManager::~EntityManager()
 void EntityManager::addEntity(std::shared_ptr<Entity> entity)
 {
 	insertQueue.push_back(entity);
-	cout << entities.size() << endl;
 }
 
 void EntityManager::removeEntity(std::shared_ptr<Entity> entity)
@@ -63,12 +62,10 @@ void EntityManager::fixedUpdate(float deltaTime)
 	insertQueue.clear();
 }
 
-
-void EntityManager::draw(sf::RenderTarget & target, sf::RenderStates states) const
+void EntityManager::render(std::shared_ptr<Renderer> renderer)
 {
 	for (auto entity : entities)
 	{
-		target.draw(*entity, states);
-
+		renderer->draw(*entity);
 	}
 }

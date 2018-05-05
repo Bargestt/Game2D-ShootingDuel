@@ -27,15 +27,7 @@ void Renderer::finishRender()
 	pWindow->display();
 }
 
-void Renderer::drawShape(const sf::Shape& shape)
-{
-	drawables.push_back( &shape );
-}
 
-void Renderer::drawSprite(const sf::Sprite & sprite)
-{
-	drawables.push_back(&sprite);
-}
 
 void Renderer::draw(const sf::Drawable& drawable)
 {

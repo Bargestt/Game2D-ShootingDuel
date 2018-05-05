@@ -14,9 +14,6 @@ public:
 	~Renderer();
 	void finishRender();
 
-	void drawShape(const sf::Shape& shape);
-	void drawSprite(const sf::Sprite& sprite);
-
 	void draw(const sf::Drawable& drawable);
 };
 

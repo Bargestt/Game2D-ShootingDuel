@@ -8,12 +8,13 @@
 #include"Entity.h"
 #include"Tank.h"
 #include"..\Collidable.h"
-
-class EntityManager : public sf::Drawable
+#include"..\Renderer.h"
+class EntityManager
 {
 	std::vector< std::shared_ptr<Entity> > entities;
 
 	std::vector< std::shared_ptr<Entity> > insertQueue;
+
 
 public:
 	EntityManager();
@@ -25,7 +26,7 @@ public:
 	void update(float deltaTime);
 	void fixedUpdate(float deltaTime);
 
-protected:	
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void render(std::shared_ptr<Renderer> renderer);
+
 };
 
