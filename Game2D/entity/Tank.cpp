@@ -8,7 +8,9 @@ using namespace sf;
 
 
 Tank::Tank(EntityManager& control, float size, float gunLen, sf::Color bodyColor)
-	: Entity(control), bodyRadius(size), gunLength(gunLen), bodyColor(bodyColor)
+	: Entity(control), 
+	bodyRadius(size), gunLength(gunLen), bodyColor(bodyColor)
+
 {
 	init();
 }

@@ -44,7 +44,8 @@ void Bullet::onCollision(const Entity& other)
 	if (type == TANK)
 	{
 		status = DEAD;
-		source.setScore(source.getScore() + 1);
+		if(&source != &other)
+			source.setScore(source.getScore() + 1);
 	}
 	else if (type == OBSTACLE)
 	{

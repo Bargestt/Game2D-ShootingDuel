@@ -24,26 +24,26 @@ public:
 	Entity(EntityManager& control);
 	~Entity() {};
 
-	EntityManager& getControl();
-
 	virtual void update(float deltaTime) =0;
-	virtual void fixedUpdate(float deltaTime) {};
+	virtual void fixedUpdate(float deltaTime);
 
 	virtual void setPosition(const sf::Vector2f& position) = 0;
 	virtual sf::Vector2f getPosition() const = 0;
 
+
 	//Collisions
 	virtual void onCollision(const Entity& other) = 0;	
-	std::shared_ptr<Collidable> getCollider() const { return collider; }
 	bool collidesWith(const Entity& target) const;
 
-
+	std::shared_ptr<Collidable> getCollider() const;
+	EntityManager& getControl();
 	
 	//Identification
-	EntityType getType()const { return type; }
-	Status getStatus()const { return status; }
-	std::string getName() const { return name; }
-	void setName(const std::string& name) { this->name = name; }
+	EntityType getType()const;
+	Status getStatus()const;
+
+	std::string getName() const;
+	void setName(const std::string& name);
 
 protected:
 	EntityType type = NONE;

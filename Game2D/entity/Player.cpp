@@ -20,16 +20,6 @@ Player::~Player()
 	
 }
 
-void Player::update(float deltaTime)
-{
-	Tank::update(deltaTime);
-
-}
-
-void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const
-{
-	Tank::draw(target, states);
-}
 
 
 

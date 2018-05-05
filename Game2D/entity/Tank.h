@@ -37,7 +37,6 @@ public:
 private:
 	void init();
 public:
-
 	virtual void update(float deltaTime);
 	//basic obstacle collision
 	virtual void onCollision(const Entity& other);

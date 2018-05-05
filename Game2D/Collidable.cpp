@@ -27,6 +27,7 @@ CircleCollider::CircleCollider(Entity& owner, float radius)
 
 bool CircleCollider::collidesWith(std::shared_ptr<Collidable> target) const
 {
+	//TODO: make generalized version
 	//normal distance from edge of a target to our center
 	if (target->type == CIRCLE)
 	{
