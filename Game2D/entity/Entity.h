@@ -4,6 +4,7 @@
 
 #include "..\Collidable.h"
 
+
 class EntityManager;
 
 class Entity : public sf::Drawable
@@ -18,11 +19,15 @@ public:
 
 private:	
 	std::string name = "AbstractEntity"; // name for debug purpose or maybe more
+	EntityManager& control;
 public:
-	Entity(){};
+	Entity(EntityManager& control);
 	~Entity() {};
 
+	EntityManager& getControl();
+
 	virtual void update(float deltaTime) =0;
+	virtual void fixedUpdate(float deltaTime) {};
 
 	virtual void setPosition(const sf::Vector2f& position) = 0;
 	virtual sf::Vector2f getPosition() const = 0;

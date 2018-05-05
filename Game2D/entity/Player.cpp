@@ -6,14 +6,9 @@
 using namespace std;
 using namespace sf;
 
-Player::Player()
-{
-	setName("Player");
-	//type = PLAYER;
-}
 
-Player::Player(float size, float gunLen, sf::Color bodyColor)
-	:Tank(size, gunLen, bodyColor)
+Player::Player(EntityManager& control, sf::Color bodyColor)
+	:Tank(control, 30, 50, bodyColor)
 {
 	setName("Player");
 	//type = PLAYER;

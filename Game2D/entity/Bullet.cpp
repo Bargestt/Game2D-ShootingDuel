@@ -5,8 +5,8 @@
 using namespace std;
 using namespace sf;
 
-Bullet::Bullet(Tank& source, sf::Vector2f pos, float angle, float speed, float size)
-	:source(source), angle(angle), speed(speed)
+Bullet::Bullet(EntityManager& control, Tank& source, sf::Vector2f pos, float angle, float speed, float size)	
+	:Entity(control), source(source), angle(angle), speed(speed)
 {
 	setName("Bullet");
 	type = BULLET;

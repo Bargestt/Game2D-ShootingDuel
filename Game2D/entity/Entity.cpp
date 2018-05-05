@@ -1,7 +1,19 @@
 #include "..\stdafx.h"
 #include "Entity.h"
 
-bool Entity::collidesWith(const Entity & target) const	
+#include"EntityManager.h"
+
+Entity::Entity(EntityManager & control)
+	:control(control)
+{
+}
+
+EntityManager & Entity::getControl()
+{
+	return control;
+}
+
+bool Entity::collidesWith(const Entity & target) const
 {
 	if (collider == nullptr) return false;
 	if (target.getCollider() == nullptr) return false;

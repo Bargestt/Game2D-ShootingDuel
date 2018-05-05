@@ -2,8 +2,8 @@
 #include "Border.h"
 
 
-Border::Border(float x, float y, float w, float h)
-	:Obstacle(x,y,w,h)
+Border::Border(EntityManager& control, float x, float y, float w, float h)
+	: Obstacle(control, x,y,w,h)
 {
 	body.setOutlineColor(sf::Color::White);
 	type = EntityType::BORDER;

@@ -3,7 +3,7 @@
 class Border : public Obstacle
 {	
 public:
-	Border(float x, float y, float w, float h);
+	Border(EntityManager& control, float x, float y, float w, float h);
 	~Border();
 
 public:

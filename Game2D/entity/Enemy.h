@@ -17,9 +17,9 @@ class Enemy : public Tank
 
 
 public:
-	bool readyToFire = false;
 
-	Enemy(float size, float gunLen, sf::Color bodyColor = sf::Color::Red);
+
+	Enemy(EntityManager& control, sf::Color bodyColor = sf::Color::Red);
 	~Enemy();
 
 	void update(float deltaTime);

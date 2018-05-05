@@ -80,10 +80,10 @@ void AI_ShootAt::action()
 	float dAngle = angleToDest - oAngle;
 	if (fabsf(dAngle) <= 1.0f) {
 		owner.setTurnLeft(false);
-		owner.readyToFire = true;
+		owner.doAction();
 		complete();
 		return;
 	}
-	owner.readyToFire = false;
+
 	owner.setTurnLeft(true);
 }

@@ -8,7 +8,7 @@ protected:
 
 	sf::Color bodyColor = sf::Color(255, 0, 255);
 public:
-	Obstacle(float x, float y, float w, float h);
+	Obstacle(EntityManager& control,float x, float y, float w, float h);
 	~Obstacle();
 
 

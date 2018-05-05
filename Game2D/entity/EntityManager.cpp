@@ -16,15 +16,7 @@ EntityManager::~EntityManager()
 
 void EntityManager::addEntity(std::shared_ptr<Entity> entity)
 {
-	//TODO: Inefficient
-	auto r = std::find(entities.begin(), entities.end(), entity);
-	if (r == entities.end()) 
-	{
-		entities.push_back(entity);	
-
-	}
-
-	cout << entities.size() <<endl;
+	insertQueue.push_back(entity);
 }
 
 void EntityManager::removeEntity(std::shared_ptr<Entity> entity)
@@ -57,15 +49,18 @@ void EntityManager::fixedUpdate(float deltaTime)
 			[](auto ent) {return ent->getStatus() == Entity::DEAD; })
 		, entities.end()
 	);
+
+
+	//TODO: Inefficient
+	for (auto nEntity : insertQueue) {
+		auto r = std::find(entities.begin(), entities.end(), nEntity);
+		if (r == entities.end()) 
+		{
+			entities.push_back(nEntity);
+		}
+	}
 }
 
-void EntityManager::performAction(std::shared_ptr<Tank> entity)
-{
-	auto action = entity->getAction();
-	if (action == nullptr) return;
-
-	action->execute(*this);
-}
 
 void EntityManager::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {

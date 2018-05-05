@@ -21,7 +21,7 @@ private:
 
 public:
 	Player();
-	Player(float size, float gunLen, sf::Color bodyColor);
+	Player(EntityManager& control, sf::Color bodyColor = sf::Color::Green);
 	~Player();
 
 	void update(float deltaTime);

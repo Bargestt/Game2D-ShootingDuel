@@ -4,7 +4,8 @@
 
 
 
-Obstacle::Obstacle(float x, float y, float w, float h)	
+Obstacle::Obstacle(EntityManager& control, float x, float y, float w, float h)
+	:Entity(control)
 {
 	setName("Obstacle");
 	body.setPosition(x, y);

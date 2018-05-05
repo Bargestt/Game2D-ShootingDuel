@@ -77,11 +77,6 @@ void Game::events()
 		else if (event.type == sf::Event::KeyReleased)
 			keyRelease(event.key);
 	}
-	if (enemy->readyToFire) {
-		manager.performAction(enemy);
-		enemy->readyToFire = false;
-	}
-
 }
 void Game::keyRelease(const sf::Event::KeyEvent& e) {
 	if (e.code == Keyboard::A)
@@ -108,7 +103,7 @@ void Game::keyPress(const sf::Event::KeyEvent& e) {
 		player->setTurnRight(true);
 	}
 	else if (e.code == Keyboard::Space) {
-		manager.performAction(player);
+		player->doAction();
 	}
 }
 
@@ -118,11 +113,11 @@ void Game::initRes()
 	renderer = make_shared<Renderer>(context);
 
 	
-	player = make_shared<Player>(30.0f, 50.0f, Color::Green);
+	player = make_shared<Player>(manager, Color::Green);
 	player->setPosition(100, 100);
 	manager.addEntity(player);
 
-	enemy = make_shared<Enemy>(30.0f, 50.0f);
+	enemy = make_shared<Enemy>(manager);
 	enemy->setPosition(300, 300);
 	enemy->setNemesis(player);
 
@@ -136,10 +131,10 @@ void Game::initRes()
 		{ static_cast<float>(pWindow->getSize().x - 130), 0 }, 30, GuiLabel::RIGHT);
 
 
-	manager.addEntity(make_shared<Obstacle>(200.0f, 100.0f, 200.0f, 100.0f));
-	manager.addEntity(make_shared<Obstacle>(700.0f, 200.0f, 100.0f, 300.0f));
-	manager.addEntity(make_shared<Obstacle>(100.0f, 500.0f, 100.0f, 200.0f));
-	manager.addEntity(make_shared<Obstacle>(850.0f, 300.0f, 100.0f, 100.0f));
+	manager.addEntity(make_shared<Obstacle>(manager, 200.0f, 100.0f, 200.0f, 100.0f));
+	manager.addEntity(make_shared<Obstacle>(manager, 700.0f, 200.0f, 100.0f, 300.0f));
+	manager.addEntity(make_shared<Obstacle>(manager, 100.0f, 500.0f, 100.0f, 200.0f));
+	manager.addEntity(make_shared<Obstacle>(manager, 850.0f, 300.0f, 100.0f, 100.0f));
 
 
 
@@ -147,8 +142,8 @@ void Game::initRes()
 	float w = static_cast<float>( pWindow->getSize().x );
 	float h = static_cast<float>( pWindow->getSize().y );
 
-	manager.addEntity(make_shared<Border>(-s, -s, w+s, s ));
-	manager.addEntity(make_shared<Border>(w, -s, s, h+s));
-	manager.addEntity(make_shared<Border>(0.0f, h, w+s, s));
-	manager.addEntity(make_shared<Border>(-s, 0.0f, s, h+s));
+	manager.addEntity(make_shared<Border>(manager, -s, -s, w+s, s ));
+	manager.addEntity(make_shared<Border>(manager, w, -s, s, h+s));
+	manager.addEntity(make_shared<Border>(manager, 0.0f, h, w+s, s));
+	manager.addEntity(make_shared<Border>(manager, -s, 0.0f, s, h+s));
 }

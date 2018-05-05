@@ -12,7 +12,7 @@ void ShootAction::execute(EntityManager& control) {
 	gunPoint.x  += static_cast<float>(cos(owner.getAngle() * M_PI / 180)) * owner.getGunLength();
 	gunPoint.y  += static_cast<float>(sin(owner.getAngle() * M_PI / 180)) * owner.getGunLength();
 
-	auto bullet = std::make_shared<Bullet>(
+	auto bullet = std::make_shared<Bullet>( control,
 											owner, 
 											gunPoint, 
 											owner.getAngle(), 

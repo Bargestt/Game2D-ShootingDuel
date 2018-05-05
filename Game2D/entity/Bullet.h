@@ -15,7 +15,8 @@ class Bullet : public Entity
 	float speedY;
 
 public:
-	Bullet(Tank& source, sf::Vector2f pos, float angle, float speed, float size);
+	Bullet(EntityManager& control, Tank& source, sf::Vector2f pos, 
+		float angle, float speed, float size);
 	~Bullet();
 
 	void update(float deltaTime) override;

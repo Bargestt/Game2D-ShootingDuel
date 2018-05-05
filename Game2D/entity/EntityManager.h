@@ -13,6 +13,8 @@ class EntityManager : public sf::Drawable
 {
 	std::vector< std::shared_ptr<Entity> > entities;
 
+	std::vector< std::shared_ptr<Entity> > insertQueue;
+
 public:
 	EntityManager();
 	~EntityManager();
@@ -22,8 +24,6 @@ public:
 
 	void update(float deltaTime);
 	void fixedUpdate(float deltaTime);
-
-	void performAction(std::shared_ptr<Tank> entity);
 
 protected:	
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;

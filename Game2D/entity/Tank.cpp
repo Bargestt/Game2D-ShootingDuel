@@ -6,13 +6,9 @@
 using namespace std;
 using namespace sf;
 
-Tank::Tank()
-{
-	init();
-}
 
-Tank::Tank(float size, float gunLen, sf::Color bodyColor)
-	: bodyRadius(size), gunLength(gunLen), bodyColor(bodyColor)
+Tank::Tank(EntityManager& control, float size, float gunLen, sf::Color bodyColor)
+	: Entity(control), bodyRadius(size), gunLength(gunLen), bodyColor(bodyColor)
 {
 	init();
 }
@@ -81,6 +77,12 @@ void Tank::setScore(int score)
 	this->score = score; 
 	if (guiListener != nullptr)
 		guiListener->updateData();
+}
+
+void Tank::doAction()
+{
+	if (action == nullptr) return;
+	action->execute(getControl());
 }
 
 void Tank::setColor(const sf::Color & color)

@@ -6,8 +6,8 @@
 
 using namespace std;
 
-Enemy::Enemy(float size, float gunLen, sf::Color bodyColor)
-	:Tank(size, gunLen, bodyColor)
+Enemy::Enemy(EntityManager& control, sf::Color bodyColor)
+	:Tank(control, 30, 50, bodyColor)
 {
 	setName("Tank");
 	//type = ENEMY;

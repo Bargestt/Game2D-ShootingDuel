@@ -1,7 +1,8 @@
 #pragma once
-#include"Entity.h"
 #include"..\gui\GuiElement.h"
 #include "..\actions\Actions.h"
+
+#include"Entity.h"
 
 class Tank : public Entity
 {
@@ -31,8 +32,7 @@ private:
 
 	double dx =0, dy=0; //last movement increment
 public:	
-	Tank();
-	Tank(float size, float gunLen, sf::Color bodyColor);
+	Tank(EntityManager& control, float size, float gunLen, sf::Color bodyColor);
 	~Tank();
 private:
 	void init();
@@ -63,6 +63,7 @@ public:
 
 	std::shared_ptr<Action> getAction() { return action; }
 	void setAction(std::shared_ptr<Action> newAction) { action = newAction; }
+	void doAction();
 
 	void setColor(const sf::Color& color);
 
