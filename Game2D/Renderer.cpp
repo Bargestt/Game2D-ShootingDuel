@@ -34,3 +34,14 @@ void Renderer::draw(const sf::Drawable& drawable)
 	drawables.push_back(&drawable);
 }
 
+bool Renderer::isInside(sf::Vector2f point, float leeway)
+{
+	auto rect = sf::FloatRect(
+		0 - leeway,
+		0 - leeway, 
+		pWindow->getSize().x + leeway * 2, 
+		pWindow->getSize().y + leeway * 2);
+
+	return 	rect.contains(point);
+}
+

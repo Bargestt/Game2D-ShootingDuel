@@ -15,5 +15,7 @@ public:
 	void finishRender();
 
 	void draw(const sf::Drawable& drawable);
+
+	bool isInside(sf::Vector2f point, float leeway = 0);
 };
 

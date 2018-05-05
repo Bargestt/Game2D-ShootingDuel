@@ -66,6 +66,8 @@ void EntityManager::render(std::shared_ptr<Renderer> renderer)
 {
 	for (auto entity : entities)
 	{
-		renderer->draw(*entity);
+		//camera culling
+		if (renderer->isInside(entity->getPosition()))
+			renderer->draw(*entity);
 	}
 }
