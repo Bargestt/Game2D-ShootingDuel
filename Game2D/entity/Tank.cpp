@@ -158,13 +158,13 @@ void Tank::rotateLeft(float deltaTime)
 {
 	float newAngle = angle - rotationSpeed * deltaTime;
 	setAngle(newAngle);
-	if (angle < 0)angle += 360.0f;
+	if (angle < -180)angle += 360.0f;
 
 }
 void Tank::rotateRight(float deltaTime)
 {
 	float newAngle = angle + rotationSpeed * deltaTime;
 	setAngle(newAngle);
-	if (angle >= 360)angle -= 360.0f;
+	if (angle >= 180)angle -= 360.0f;
 	
 }

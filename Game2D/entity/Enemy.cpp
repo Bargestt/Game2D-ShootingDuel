@@ -33,12 +33,11 @@ void Enemy::generateNewAction()
 {
 	random_device device;
 	mt19937 mt(device());
-	std::uniform_real_distribution<float> rnd(0, 10);
+	std::uniform_real_distribution<float> rnd(0, 5);
 
 	std::uniform_real_distribution<float> rnd2(0.1, 2);
 
 	aiAction->complete();
-
 	// no timeot for shooting, so it can do funny bursts, it's bug tho
 	switch (static_cast<int>(rnd(mt))) {
 	case 0:
@@ -59,3 +58,5 @@ void Enemy::generateNewAction()
 		break;
 	}
 }
+
+

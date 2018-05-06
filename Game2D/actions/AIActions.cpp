@@ -20,6 +20,7 @@ void AI_Action::execute(float deltaTime)
 AI_Move::AI_Move(Enemy & owner, sf::Vector2f dest)
 	:AI_Action(owner), destination(dest)
 {
+	cout << destination.x << " : " << destination.y << endl;
 }
 void AI_Move::action()
 {
@@ -41,29 +42,28 @@ void AI_Move::action()
 		owner.setMoveForward(true);
 	}	
 
-	float angleToDest = static_cast<float>(atan2f(dy, dx) / M_PI * 180);
-	if (angleToDest < 0) angleToDest += 360.0f;
+	float desiredAngle = static_cast<float>(atan2f(dy, dx) / M_PI * 180);
 
-	float dAngle = angleToDest - oAngle;
-
+	float dAngle = desiredAngle - owner.getAngle();
+	if (dAngle < -180)dAngle += 360.0f;
+	if (dAngle >= 180)dAngle -= 360.0f;
 
 	if (fabsf(dAngle) <= 1.0f) {
 		owner.setTurnLeft(false);
+		owner.setTurnRight(false);
 		return;
 	}
-	//cout << oAngle << endl;
 
-	owner.setTurnLeft(true);	
+	if (dAngle < 0)
+		owner.setTurnLeft(true);
+	if (dAngle > 0)
+		owner.setTurnRight(true);
 }
 
 
 
 AI_ShootAt::AI_ShootAt(Enemy & owner, sf::Vector2f target)
 	:AI_Action(owner), target(target)
-{
-}
-
-void AI_ShootAt::action()
 {
 	owner.setMoveForward(false);
 	owner.setMoveBackward(false);
@@ -74,16 +74,30 @@ void AI_ShootAt::action()
 	float dx = target.x - oPos.x;
 	float dy = target.y - oPos.y;
 
-	float angleToDest = static_cast<float>(atan2f(dy, dx) / M_PI * 180);
-	if (angleToDest < 0) angleToDest += 360.0f;
+	desiredAngle = static_cast<float>(atan2f(dy, dx) / M_PI * 180);
 
-	float dAngle = angleToDest - oAngle;
+	float dAngle = desiredAngle - owner.getAngle();
+	if (dAngle < -180)dAngle += 360.0f;
+	if (dAngle >= 180)dAngle -= 360.0f;
+
+	if(dAngle < 0)
+		owner.setTurnLeft(true);
+	if(dAngle > 0)
+		owner.setTurnRight(true);
+	//cout << dAngle << endl;
+}
+
+void AI_ShootAt::action()
+{
+	float dAngle = desiredAngle - owner.getAngle();
+	if (dAngle < -180)dAngle += 360.0f;
+	if (dAngle >= 180)dAngle -= 360.0f;
+
 	if (fabsf(dAngle) <= 1.0f) {
 		owner.setTurnLeft(false);
+		owner.setTurnRight(false);
 		owner.doAction();
 		complete();
 		return;
 	}
-
-	owner.setTurnLeft(true);
 }

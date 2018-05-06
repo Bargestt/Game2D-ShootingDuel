@@ -35,6 +35,7 @@ public:
 class AI_ShootAt : public AI_Action
 {
 	sf::Vector2f target;
+	float desiredAngle;
 public:
 	AI_ShootAt(Enemy & owner, sf::Vector2f target);
 	~AI_ShootAt() {};

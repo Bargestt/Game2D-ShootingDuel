@@ -28,5 +28,7 @@ public:
 
 	void setNemesis(std::shared_ptr<Entity> target) { nemesis = target; }
 	std::shared_ptr<Entity> getNemesis() const { return nemesis; }
+
+//	virtual void onCollision(const Entity& other);
 };
 
